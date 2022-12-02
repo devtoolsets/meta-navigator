@@ -1,0 +1,6 @@
+&gem1 {
+    phy1: ethernet-phy@1 {          /* yt8521*/
+        reg = <0x7>;
+        device_type = "ethernet-phy";
+    };
+};
