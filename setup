@@ -2,12 +2,10 @@
 
 source layers/core/oe-init-build-env
 
-bitbake-layers add-layer ../layers/meta-xilinx/meta-xilinx-core/ \
-                         ../layers/meta-xilinx/meta-xilinx-standalone \
-                         ../layers/meta-xilinx-tools/ \
-                         ../layers/meta-openembedded/meta-oe \
+bitbake-layers add-layer ../layers/meta-openembedded/meta-oe \
                          ../layers/meta-openembedded/meta-python \
                          ../layers/meta-openembedded/meta-networking \
+                         ../layers/meta-xilinx/meta-xilinx-core/ \
+                         ../layers/meta-xilinx/meta-xilinx-standalone \
+                         ../layers/meta-xilinx-tools/ \
                          ../meta-zynq
-bitbake zynq-image -s >zynq-image.recipes.log
-bitbake zynq-image -g

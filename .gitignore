@@ -1,11 +1,3 @@
 .repo
 layers
-build/*.lock
-build/*.log
-build/cache
-build/downloads
-build/pn-buildlist
-build/sstate-cache
-build/task-depends.dot
-build/tmp
-build/xsct
+build
