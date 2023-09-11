@@ -1,11 +1,8 @@
 #! /bin/bash
 
-source layers/core/oe-init-build-env
+bootstrap=$(realpath "${BASH_SOURCE[0]}")
+bootstrap_directory=$(dirname "${bootstrap}")
+rootdir=$(realpath "${bootstrap_directory}/../..")
 
-bitbake-layers add-layer ../layers/meta-openembedded/meta-oe \
-                         ../layers/meta-openembedded/meta-python \
-                         ../layers/meta-openembedded/meta-networking \
-                         ../layers/meta-xilinx/meta-xilinx-core/ \
-                         ../layers/meta-xilinx/meta-xilinx-standalone \
-                         ../layers/meta-xilinx-tools/ \
-                         ../meta-zynq
+TEMPLATECONF="${rootdir}/layers/meta-navigator/conf/templates/default" \
+    source "${rootdir}/layers/core/oe-init-build-env"
