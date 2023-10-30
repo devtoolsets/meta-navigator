@@ -107,10 +107,27 @@
         view-port = <0x0170>;
         drv-vbus;
     };
+
+    reserved-memory {
+        #address-cells = <1>;
+        #size-cells = <1>;
+        ranges;
+
+        uio_cma: cma {
+            compatible = "shared-dma-pool";
+            /* alloc-ranges = <0 0x10000>; */
+            size = <0x5000000>;
+            alignment = <0x1000>;
+            reusable;
+            linux,cma-default;
+        };
+    };
 };
 
 &gem0 {
     phy-handle = <&phy0>;
+    memory-region = <&uio_cma>;
+    memory-region-size = <0x3000000>;
     mdio {
         phy0: ethernet-phy@7 {  /* YT8521 */
             reg = <0x7>;
@@ -122,6 +139,8 @@
 &gem1 {
     phy-reset-gpio = <&gpio0 0x42 GPIO_ACTIVE_LOW>;
     phy-reset-active-low;
+    memory-region = <&uio_cma>;
+    memory-region-size = <0x3000000>;
     mdio {
         /delete-node/ gmii_to_rgmii_0@31;
         phy1: ethernet-phy@4 {  /* YT8511 */
